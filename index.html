@@ -1,194 +1,789 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Marshal Benedict | Portfolio</title>
+    <title>Marshal Benedict | Python Full Stack Developer</title>
+
+    <meta
+        name="description"
+        content="Marshal Benedict's developer portfolio featuring skills, experience, and web development projects."
+    >
 
     <style>
-        /* CSS Styling */
+        /* =========================
+           GLOBAL STYLES
+        ========================= */
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-
-        html {
             scroll-behavior: smooth;
         }
 
+        :root {
+            --primary: #6c63ff;
+            --secondary: #00c9a7;
+            --dark: #111827;
+            --light: #f8fafc;
+            --text: #334155;
+            --white: #ffffff;
+            --border: #e2e8f0;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #0f172a;
-            color: white;
-            line-height: 1.6;
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--light);
+            color: var(--text);
+            line-height: 1.7;
         }
 
-        .container {
-            width: 90%;
-            max-width: 1100px;
-            margin: auto;
-        }
-
-        header {
-            background-color: #1e293b;
-            padding: 20px 0;
-            position: sticky;
-            top: 0;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .logo {
-            color: #38bdf8;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        nav ul {
-            display: flex;
-            gap: 20px;
-            list-style: none;
-        }
-
-        nav ul li a {
-            color: white;
+        a {
             text-decoration: none;
+            color: inherit;
         }
 
-        nav ul li a:hover {
-            color: #38bdf8;
+        img {
+            max-width: 100%;
+            display: block;
         }
 
         section {
-            padding: 70px 0;
+            padding: 90px 8%;
             scroll-margin-top: 80px;
         }
 
-        h1 {
-            font-size: 42px;
-            margin-bottom: 15px;
+        .container {
+            max-width: 1200px;
+            margin: auto;
         }
 
-        h2 {
-            font-size: 30px;
-            margin-bottom: 20px;
-            color: #38bdf8;
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            color: var(--dark);
+            margin-bottom: 12px;
         }
 
-        p {
-            color: #cbd5e1;
-            margin-bottom: 15px;
+        .section-subtitle {
+            text-align: center;
+            margin-bottom: 45px;
+            color: #64748b;
         }
 
-        .hero {
-            min-height: 400px;
-            display: flex;
-            align-items: center;
-        }
-
-        .hero span {
-            color: #38bdf8;
+        .highlight {
+            color: var(--primary);
         }
 
         .btn {
             display: inline-block;
-            background-color: #38bdf8;
-            color: #0f172a;
-            padding: 10px 20px;
-            margin-top: 15px;
-            border-radius: 5px;
-            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            background: var(--primary);
+            color: var(--white);
             font-weight: bold;
+            border: 2px solid var(--primary);
+            transition: 0.3s;
+            cursor: pointer;
         }
 
         .btn:hover {
-            background-color: white;
+            background: transparent;
+            color: var(--primary);
+            transform: translateY(-3px);
         }
 
-        .card {
-            background-color: #1e293b;
-            padding: 25px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            border: 1px solid #334155;
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        header {
+            width: 100%;
+            background: var(--white);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.07);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
-        .skills {
+        .navbar {
+            max-width: 1400px;
+            margin: auto;
+            padding: 15px 6%;
             display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .skills span {
-            background-color: #334155;
-            padding: 10px 15px;
-            border-radius: 5px;
-        }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            justify-content: space-between;
+            align-items: center;
             gap: 20px;
         }
 
-        .project-links {
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: var(--dark);
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
             display: flex;
-            gap: 15px;
+            align-items: center;
+            gap: 23px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .contact-icons {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .contact-icons a {
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #f1f5f9;
+            font-size: 19px;
+            transition: 0.3s;
+        }
+
+        .contact-icons a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: var(--dark);
+        }
+
+        /* =========================
+           HOME SECTION
+        ========================= */
+
+        #home {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(
+                135deg,
+                #eef2ff,
+                #f8fafc,
+                #ecfeff
+            );
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .hero-content .welcome {
+            color: var(--primary);
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .hero-content h1 {
+            color: var(--dark);
+            font-size: 52px;
+            line-height: 1.2;
+            margin: 15px 0;
+        }
+
+        .hero-content h2 {
+            font-size: 25px;
+            margin-bottom: 18px;
+            color: #475569;
+        }
+
+        .hero-content p {
+            margin-bottom: 25px;
+            max-width: 600px;
+        }
+
+        .hero-buttons {
+            display: flex;
             flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 450px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 30px;
+            box-shadow: 15px 15px 0 #c7d2fe;
+        }
+
+        /* =========================
+           ABOUT SECTION
+        ========================= */
+
+        #about {
+            background: white;
+        }
+
+        .about-container {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            align-items: center;
+            gap: 55px;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-content h2 {
+            font-size: 36px;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            margin-bottom: 15px;
+        }
+
+        .about-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .info-box {
+            padding: 15px;
+            background: #f8fafc;
+            border-left: 4px solid var(--primary);
+            border-radius: 8px;
+            overflow-wrap: anywhere;
+        }
+
+        .info-box strong {
+            color: var(--dark);
+        }
+
+        /* =========================
+           SKILLS SECTION
+        ========================= */
+
+        #skills {
+            background: #f8fafc;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .skill-card {
+            padding: 28px;
+            background: white;
+            border-radius: 15px;
+            border: 1px solid var(--border);
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .skill-card h3 {
+            color: var(--dark);
+            margin-bottom: 15px;
+            font-size: 21px;
+        }
+
+        .skill-card p {
+            font-size: 14px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
             margin-top: 15px;
         }
 
-        .project-links a {
-            color: #38bdf8;
-            text-decoration: none;
+        .skill-tags span {
+            padding: 6px 12px;
+            background: #eef2ff;
+            color: #4f46e5;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
         }
 
-        .project-links a:hover {
-            text-decoration: underline;
+        /* =========================
+           EXPERIENCE SECTION
+        ========================= */
+
+        #experience {
+            background: white;
         }
-       footer {
-    width: 100%;
-    text-align: center;
-    padding: 20px 0;
-}
 
-footer .container {
-    width: 100%;
-    max-width: 1100px;
-    margin: 0 auto;
-}
+        .experience-card {
+            max-width: 850px;
+            margin: auto;
+            padding: 30px;
+            background: #f8fafc;
+            border-radius: 15px;
+            border-left: 5px solid var(--primary);
+        }
 
-footer p {
-    text-align: center;
-    margin: 0;
-}
+        .experience-card h3 {
+            font-size: 24px;
+            color: var(--dark);
+        }
 
-        @media (max-width: 700px) {
-            nav {
-                flex-direction: column;
-                gap: 15px;
-            }
+        .experience-card h4 {
+            color: var(--primary);
+            margin: 8px 0;
+        }
 
-            nav ul {
+        .experience-card ul {
+            padding-left: 22px;
+            margin-top: 15px;
+        }
+
+        .experience-card li {
+            margin-bottom: 8px;
+        }
+
+        /* =========================
+           PROJECTS SECTION
+        ========================= */
+
+        #projects {
+            background: #f8fafc;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            background: #e2e8f0;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.4s;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.04);
+        }
+
+        .project-content {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .project-content h3 {
+            color: var(--dark);
+            font-size: 23px;
+            margin-bottom: 10px;
+        }
+
+        .project-content p {
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .project-tags span {
+            background: #eef2ff;
+            color: #4f46e5;
+            padding: 5px 10px;
+            font-size: 12px;
+            border-radius: 20px;
+        }
+
+        .project-button {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            align-self: flex-start;
+            gap: 8px;
+            margin-top: auto;
+            padding: 11px 20px;
+            border-radius: 8px;
+            background: var(--primary);
+            color: white;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .project-button:hover {
+            background: #5148e5;
+            transform: translateY(-2px);
+        }
+
+        /* =========================
+           CONTACT SECTION
+        ========================= */
+
+        #contact {
+            background: white;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 40px;
+        }
+
+        .contact-info h3 {
+            color: var(--dark);
+            font-size: 27px;
+            margin-bottom: 15px;
+        }
+
+        .contact-info p {
+            margin-bottom: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 18px;
+            margin-bottom: 15px;
+            background: #f8fafc;
+            border-radius: 10px;
+            overflow-wrap: anywhere;
+        }
+
+        .contact-item .icon {
+            font-size: 23px;
+        }
+
+        .contact-item strong {
+            color: var(--dark);
+            display: block;
+        }
+
+        .contact-item a {
+            color: var(--primary);
+            overflow-wrap: anywhere;
+        }
+
+        .contact-form {
+            padding: 30px;
+            background: #f8fafc;
+            border-radius: 15px;
+        }
+
+        .contact-form h3 {
+            color: var(--dark);
+            font-size: 25px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+            color: var(--dark);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 15px;
+            outline: none;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.12);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 130px;
+        }
+
+        .contact-form .btn {
+            width: 100%;
+            font-size: 16px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 30px 8%;
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 15px;
+        }
+
+        .footer-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .footer-icons a {
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #263244;
+            font-size: 20px;
+            transition: 0.3s;
+        }
+
+        .footer-icons a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* =========================
+           RESPONSIVE DESIGN
+        ========================= */
+
+        @media (max-width: 1000px) {
+            .navbar {
                 flex-wrap: wrap;
-                justify-content: center;
             }
 
-            .project-grid {
+            .nav-links {
+                gap: 14px;
+            }
+
+            .hero-content h1 {
+                font-size: 42px;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 760px) {
+            section {
+                padding: 65px 6%;
+            }
+
+            .navbar {
+                padding: 15px 5%;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0;
+                padding: 10px 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                width: 100%;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 10px 0;
+            }
+
+            .contact-icons {
+                margin-left: auto;
+            }
+
+            .hero,
+            .about-container,
+            .contact-container {
                 grid-template-columns: 1fr;
             }
 
-            h1 {
+            .hero {
+                gap: 35px;
+            }
+
+            .hero-content {
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 38px;
+            }
+
+            .hero-content h2 {
+                font-size: 21px;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-image img {
+                height: 300px;
+                max-width: 400px;
+            }
+
+            .about-image img {
+                height: 300px;
+                max-width: 450px;
+                margin: auto;
+            }
+
+            .about-content h2 {
+                font-size: 30px;
+            }
+
+            .projects-grid,
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-image {
+                height: 220px;
+            }
+
+            .section-title {
+                font-size: 30px;
+            }
+
+            .about-info {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .logo {
+                font-size: 20px;
+            }
+
+            .contact-icons {
+                gap: 7px;
+            }
+
+            .contact-icons a {
+                width: 32px;
+                height: 32px;
+                font-size: 16px;
+            }
+
+            .hero-content h1 {
                 font-size: 32px;
+            }
+
+            .project-content {
+                padding: 20px;
+            }
+
+            .contact-form {
+                padding: 20px;
             }
         }
     </style>
@@ -196,367 +791,942 @@ footer p {
 
 <body>
 
-    <!-- Navigation -->
+    <!-- =========================
+         NAVBAR
+    ========================= -->
 
     <header>
-        <nav class="container">
+        <nav class="navbar">
 
-            <div class="logo">
-                Marshal Benedict
-            </div>
+            <a href="#home" class="logo">
+                Marshal<span>.</span>
+            </a>
 
-            <ul>
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Toggle navigation"
+                aria-expanded="false"
+            >
+                ☰
+            </button>
+
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
                 <li><a href="#experience">Experience</a></li>
-                <li><a href="#education">Education</a></li>
+                <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+
+            <div class="contact-icons">
+
+                <!-- Phone -->
+                <a
+                    href="tel:+919944019647"
+                    aria-label="Call Marshal"
+                    title="Call"
+                >
+                    ☎
+                </a>
+
+                <!-- WhatsApp -->
+                <a
+                    href="https://wa.me/919944019647"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="WhatsApp Marshal"
+                    title="WhatsApp"
+                >
+                    💬
+                </a>
+
+                <!-- Email -->
+                <a
+                    href="mailto:Marshalbenadict9@gmail.com"
+                    aria-label="Email Marshal"
+                    title="Email"
+                >
+                    ✉
+                </a>
+
+            </div>
 
         </nav>
     </header>
 
-    <!-- Home Section -->
 
-    <section id="home" class="hero">
+    <!-- =========================
+         HOME SECTION
+    ========================= -->
+
+    <section id="home">
+
+        <div class="container hero">
+
+            <div class="hero-content">
+
+                <p class="welcome">Welcome to my portfolio</p>
+
+                <h1>
+                    Hello, I'm
+                    <span class="highlight">Marshal Benedict</span>
+                </h1>
+
+                <h2>Python Full Stack Developer</h2>
+
+                <p>
+                    I am passionate about web development and building
+                    user-friendly websites. I enjoy learning new technologies
+                    and creating practical projects using HTML, CSS,
+                    JavaScript, React, Python, and Django.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#projects" class="btn">
+                        View My Projects
+                    </a>
+
+                    <a href="#contact" class="btn btn-outline">
+                        Contact Me
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="hero-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=80"
+                    alt="Developers working together on computers"
+                >
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ABOUT SECTION
+    ========================= -->
+
+    <section id="about">
+
+        <div class="container about-container">
+
+            <div class="about-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80"
+                    alt="Computer and programming workspace"
+                    loading="lazy"
+                >
+
+            </div>
+
+            <div class="about-content">
+
+                <h2>About <span class="highlight">Me</span></h2>
+
+                <p>
+                    Hello! I'm Marshal Benedict, a Computer Science graduate
+                    interested in becoming a skilled Python Full Stack Developer.
+                </p>
+
+                <p>
+                    I am learning frontend and backend technologies and
+                    building projects to improve my programming, problem-solving,
+                    and web development skills.
+                </p>
+
+                <p>
+                    My goal is to build useful web applications, gain practical
+                    industry experience, and grow as a software developer.
+                </p>
+
+                <div class="about-info">
+
+                    <div class="info-box">
+                        <strong>Education</strong>
+                        <br>
+                        B.Sc. Computer Science
+                    </div>
+
+                    <div class="info-box">
+                        <strong>Career Goal</strong>
+                        <br>
+                        Python Full Stack Developer
+                    </div>
+
+                    <div class="info-box">
+                        <strong>Phone</strong>
+                        <br>
+                        <a href="tel:+919944019647">
+                            9944019647
+                        </a>
+                    </div>
+
+                    <div class="info-box">
+                        <strong>Email</strong>
+                        <br>
+                        <a href="mailto:Marshalbenadict9@gmail.com">
+                            Marshalbenadict9@gmail.com
+                        </a>
+                    </div>
+
+                </div>
+
+                <a href="#contact" class="btn">
+                    Let's Connect
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         SKILLS SECTION
+    ========================= -->
+
+    <section id="skills">
+
         <div class="container">
 
-            <h1>
-                Hello, I'm
-                <span>Marshal Benedict</span>
-            </h1>
+            <h2 class="section-title">
+                My <span class="highlight">Skills</span>
+            </h2>
 
-            <h2>Aspiring Full Stack Developer</h2>
-
-            <p>
-                I am a Computer Science graduate
-                interested in building responsive
-                websites and web applications.
+            <p class="section-subtitle">
+                Technologies and tools I am learning and using.
             </p>
 
-            <a href="#projects" class="btn">
-                View My Projects
+            <div class="skills-grid">
+
+                <div class="skill-card">
+
+                    <h3>🎨 Frontend Development</h3>
+
+                    <p>
+                        Creating website layouts and interactive
+                        user interfaces.
+                    </p>
+
+                    <div class="skill-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>Bootstrap</span>
+                        <span>JavaScript</span>
+                        <span>React</span>
+                    </div>
+
+                </div>
+
+                <div class="skill-card">
+
+                    <h3>⚙️ Backend Development</h3>
+
+                    <p>
+                        Learning server-side programming and
+                        application development.
+                    </p>
+
+                    <div class="skill-tags">
+                        <span>Python</span>
+                        <span>Django</span>
+                        <span>REST API</span>
+                    </div>
+
+                </div>
+
+                <div class="skill-card">
+
+                    <h3>🗄️ Database</h3>
+
+                    <p>
+                        Learning how to store, retrieve, and manage
+                        application data.
+                    </p>
+
+                    <div class="skill-tags">
+                        <span>MySQL</span>
+                        <span>Database Concepts</span>
+                    </div>
+
+                </div>
+
+                <div class="skill-card">
+
+                    <h3>🛠️ Developer Tools</h3>
+
+                    <p>
+                        Tools used for writing, testing, and
+                        managing development projects.
+                    </p>
+
+                    <div class="skill-tags">
+                        <span>VS Code</span>
+                        <span>Git</span>
+                        <span>GitHub</span>
+                    </div>
+
+                </div>
+
+                <div class="skill-card">
+
+                    <h3>🧠 Problem Solving</h3>
+
+                    <p>
+                        Practicing programming logic, debugging,
+                        and building projects step by step.
+                    </p>
+
+                    <div class="skill-tags">
+                        <span>JavaScript Logic</span>
+                        <span>Debugging</span>
+                        <span>Practice</span>
+                    </div>
+
+                </div>
+
+                <div class="skill-card">
+
+                    <h3>🤖 AI Tools</h3>
+
+                    <p>
+                        Exploring AI tools to support learning,
+                        development, and problem-solving.
+                    </p>
+
+                    <div class="skill-tags">
+                        <span>AI Tools</span>
+                        <span>Code Assistance</span>
+                        <span>Learning</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         EXPERIENCE SECTION
+    ========================= -->
+
+    <section id="experience">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                My <span class="highlight">Experience</span>
+            </h2>
+
+            <p class="section-subtitle">
+                My learning journey and practical development experience.
+            </p>
+
+            <div class="experience-card">
+
+                <h3>Python Full Stack Development</h3>
+
+                <h4>Profenaa Infotech | Internship / Training</h4>
+
+                <p>
+                    Learning web development through structured training
+                    and practical project work.
+                </p>
+
+                <ul>
+                    <li>
+                        Learning frontend development using HTML, CSS,
+                        and JavaScript.
+                    </li>
+
+                    <li>
+                        Developing responsive web pages and interactive
+                        website components.
+                    </li>
+
+                    <li>
+                        Practicing project development and improving
+                        programming logic.
+                    </li>
+
+                    <li>
+                        Working toward learning React, Python, Django,
+                        MySQL, and REST APIs.
+                    </li>
+
+                    <li>
+                        Building projects for practical learning and
+                        portfolio development.
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PROJECTS SECTION
+    ========================= -->
+
+    <section id="projects">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                My <span class="highlight">Projects</span>
+            </h2>
+
+            <p class="section-subtitle">
+                Explore my web development projects.
+            </p>
+
+            <div class="projects-grid">
+
+
+                <!-- PROJECT 1: STUDENT MANAGEMENT -->
+
+                <article class="project-card">
+
+                    <div class="project-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=900&q=80"
+                            alt="Students studying together"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+                    <div class="project-content">
+
+                        <h3>Student Management System</h3>
+
+                        <p>
+                            A student management project designed to
+                            organize student information and present
+                            student-related details through a web interface.
+                        </p>
+
+                        <div class="project-tags">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+
+                        <a
+                            href="https://marshalbenadict7.github.io/pratice-project/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="project-button"
+                        >
+                            View Project ↗
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PROJECT 2: NOTES APP -->
+
+                <article class="project-card">
+
+                    <div class="project-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=900&q=80"
+                            alt="Notebook and writing materials"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+                    <div class="project-content">
+
+                        <h3>Notes App</h3>
+
+                        <p>
+                            A notes application that allows users to
+                            create, edit, update, and delete notes.
+                            Notes can remain saved using browser localStorage.
+                        </p>
+
+                        <div class="project-tags">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                            <span>LocalStorage</span>
+                        </div>
+
+                        <a
+                            href="https://marshalbenadict7.github.io/notes-app/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="project-button"
+                        >
+                            View Project ↗
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PROJECT 3: TODO APP -->
+
+                <article class="project-card">
+
+                    <div class="project-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=900&q=80"
+                            alt="Planner and task list"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+                    <div class="project-content">
+
+                        <h3>To-do List App</h3>
+
+                        <p>
+                            A task management application where users
+                            can add, edit, and delete tasks. Tasks are
+                            saved in the browser using localStorage.
+                        </p>
+
+                        <div class="project-tags">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                            <span>LocalStorage</span>
+                        </div>
+
+                        <a
+                            href="https://marshalbenadict7.github.io/todo-app/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="project-button"
+                        >
+                            View Project ↗
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PROJECT 4: QUIZ APP -->
+
+                <article class="project-card">
+
+                    <div class="project-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=900&q=80"
+                            alt="Study materials and quiz preparation"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+                    <div class="project-content">
+
+                        <h3>Quiz App</h3>
+
+                        <p>
+                            An interactive quiz application that displays
+                            questions and answer options and helps users
+                            practice questions through a web interface.
+                        </p>
+
+                        <div class="project-tags">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+
+                        <a
+                            href="https://marshalbenadict7.github.io/question-app/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="project-button"
+                        >
+                            View Project ↗
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACT SECTION
+    ========================= -->
+
+    <section id="contact">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                Contact <span class="highlight">Me</span>
+            </h2>
+
+            <p class="section-subtitle">
+                Feel free to contact me about opportunities and projects.
+            </p>
+
+            <div class="contact-container">
+
+
+                <!-- CONTACT INFORMATION -->
+
+                <div class="contact-info">
+
+                    <h3>Let's Talk</h3>
+
+                    <p>
+                        You can contact me directly by phone, WhatsApp,
+                        or email.
+                    </p>
+
+
+                    <!-- PHONE -->
+
+                    <div class="contact-item">
+
+                        <span class="icon">☎</span>
+
+                        <div>
+                            <strong>Phone Number</strong>
+
+                            <a href="tel:+919944019647">
+                                9944019647
+                            </a>
+                        </div>
+
+                    </div>
+
+
+                    <!-- WHATSAPP -->
+
+                    <div class="contact-item">
+
+                        <span class="icon">💬</span>
+
+                        <div>
+                            <strong>WhatsApp Number</strong>
+
+                            <a
+                                href="https://wa.me/919944019647"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                9944019647
+                            </a>
+                        </div>
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+
+                    <div class="contact-item">
+
+                        <span class="icon">✉</span>
+
+                        <div>
+                            <strong>Email Address</strong>
+
+                            <a href="mailto:Marshalbenadict9@gmail.com">
+                                Marshalbenadict9@gmail.com
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CONTACT FORM -->
+
+                <form class="contact-form" id="contactForm">
+
+                    <h3>Send Me a Message</h3>
+
+                    <div class="form-group">
+
+                        <label for="name">Your Name</label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Enter your name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="email">Your Email</label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email address"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="subject">Subject</label>
+
+                        <input
+                            type="text"
+                            id="subject"
+                            name="subject"
+                            placeholder="Enter message subject"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="message">Your Message</label>
+
+                        <textarea
+                            id="message"
+                            name="message"
+                            placeholder="Write your message here"
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <button type="submit" class="btn">
+                        Send Message ✉
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p>
+            © <span id="currentYear"></span>
+            Marshal Benedict. All Rights Reserved.
+        </p>
+
+        <div class="footer-icons">
+
+            <a
+                href="tel:+919944019647"
+                aria-label="Call Marshal"
+                title="Call"
+            >
+                ☎
+            </a>
+
+            <a
+                href="https://wa.me/919944019647"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp Marshal"
+                title="WhatsApp"
+            >
+                💬
+            </a>
+
+            <a
+                href="mailto:Marshalbenadict9@gmail.com"
+                aria-label="Email Marshal"
+                title="Email"
+            >
+                ✉
             </a>
 
         </div>
-    </section>
 
-    <!-- About Section -->
+        <p>
+            Designed and developed by Marshal Benedict.
+        </p>
 
-    <section id="about">
-        <div class="container">
-
-            <h2>About Me</h2>
-
-            <div class="card">
-
-                <p>
-                    I completed my B.Sc. Computer Science
-                    at Anugraha Arts and Science College,
-                    affiliated with Madurai Kamaraj University.
-                </p>
-
-                <p>
-                    I have practised HTML, CSS and JavaScript
-                    by developing mini-projects. I am also
-                    learning Python Full Stack Development.
-                </p>
-
-                <p>
-                    My goal is to start my career as a
-                    Software Developer and improve my
-                    technical skills through real projects.
-                </p>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-
-    <section id="skills">
-        <div class="container">
-
-            <h2>My Skills</h2>
-
-            <div class="card">
-
-                <div class="skills">
-
-                    <span>HTML5</span>
-                    <span>CSS3</span>
-                    <span>JavaScript</span>
-                    <span>Bootstrap</span>
-                    <span>React - Learning</span>
-                    <span>Python - Learning</span>
-                    <span>Django - Learning</span>
-                    <span>MySQL - Learning</span>
-                    <span>Rest API - Learning</span>
-                    <span>GitHub</span>
-                    <span>VS Code</span>
-
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-
-    <section id="projects">
-        <div class="container">
-
-            <h2>My Projects</h2>
-
-            <div class="project-grid">
-
-                <!-- Project 1 -->
-
-                <div class="card">
-
-                    <h3>Student Management System</h3>
-
-                    <p>
-                        A mini project to manage student details.
-                    </p>
-
-                    <div class="project-links">
-
-                        <a href="https://marshalbenadict7.github.io/pratice-project/"
-                           target="_blank">
-                            Live Demo
-                        </a>
-
-                        <a href="https://github.com/marshalbenadict7/pratice-project"
-                           target="_blank">
-                            Source Code
-                        </a>
-
-                    </div>
-
-                </div>
-
-                <!-- Project 2 -->
-
-                <div class="card">
-
-                    <h3>Notes App</h3>
-
-                    <p>
-                        An application to add, edit and
-                        delete notes.
-                    </p>
-
-                    <div class="project-links">
-
-                        <a href="https://marshalbenadict7.github.io/notes-app/"
-                           target="_blank">
-                            Live Demo
-                        </a>
-
-                        <a href="https://github.com/marshalbenadict7/notes-app"
-                           target="_blank">
-                            Source Code
-                        </a>
-
-                    </div>
-
-                </div>
-
-                <!-- Project 3 -->
-
-                <div class="card">
-
-                    <h3>To-do List App</h3>
-
-                    <p>
-                        An application to manage daily tasks.
-                    </p>
-
-                    <div class="project-links">
-
-                        <a href="https://marshalbenadict7.github.io/todo-app/"
-                           target="_blank">
-                            Live Demo
-                        </a>
-
-                        <a href="https://github.com/marshalbenadict7/todo-app"
-                           target="_blank">
-                            Source Code
-                        </a>
-
-                    </div>
-
-                </div>
-
-                <!-- Project 4 -->
-
-                <div class="card">
-
-                    <h3>Timed Quiz App</h3>
-
-                    <p>
-                        A quiz application with a timer.
-                    </p>
-
-                    <div class="project-links">
-
-                        <a href="https://marshalbenadict7.github.io/question-app/"
-                           target="_blank">
-                            Live Demo
-                        </a>
-
-                        <a href="https://github.com/marshalbenadict7/question-app"
-                           target="_blank">
-                            Source Code
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-
-<section id="experience">
-    <div class="container">
-
-        <h2>Internship Experience</h2>
-
-        <div class="card">
-
-            <h3>Python Full Stack Developer Intern</h3>
-
-            <h4>Profenaa Infotech</h4>
-
-            <p>
-                I am currently undergoing an internship
-                at Profenaa Infotech, where I am developing
-                my web development skills through practical
-                projects and hands-on learning.
-            </p>
-
-            <p>
-                <strong>Technologies:</strong>
-                HTML, CSS, JavaScript, Python, Django,
-                MySQL and React (learning).
-            </p>
-
-            <p>
-                <strong>Responsibilities:</strong>
-            </p>
-
-            <ul>
-                <li>Developing responsive web pages.</li>
-                <li>Building mini-projects using HTML, CSS and JavaScript.</li>
-                <li>Practising problem-solving and JavaScript concepts.</li>
-                <li>Learning full-stack web development.</li>
-            </ul>
-
-            <p>
-                <strong>Status:</strong> Currently Ongoing
-            </p>
-
-        </div>
-
-    </div>
-</section>
-    </section>
-
-    <!-- Education Section -->
-
-    <section id="education">
-        <div class="container">
-
-            <h2>Education</h2>
-
-            <div class="card">
-
-                <h3>B.Sc. Computer Science</h3>
-
-                <p>
-                    Anugraha Arts and Science College
-                </p>
-
-                <p>
-                    Madurai Kamaraj University
-                </p>
-
-                <p>
-                    Graduation Year: 2026
-                </p>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-
-   <!-- Contact Section -->
-
-<section id="contact">
-    <div class="container">
-
-        <h2>Contact Me</h2>
-
-        <div class="card">
-
-            <h3>Marshal Benedict</h3>
-
-            <p>
-                📧 Email:
-                <a href="mailto:Marshalbenadict9@gmail.com">
-                    Marshalbenadict9@gmail.com
-                </a>
-            </p>
-
-            <p>
-                📍 Location: Dindigul District, Tamil Nadu, India
-            </p>
-
-            <p>
-                📱 Mobile: 9944019647
-            </p>
-
-            <p>
-                💻 GitHub:
-                <a href="https://github.com/marshalbenadict7"
-                   target="_blank">
-                    Visit My GitHub
-                </a>
-            </p>
-
-        </div>
-
-    </div>
-</section>
-    <!-- Footer -->
-
-    <footer>
-        <div class="container">
-
-            <p>
-                @ <span id="year"></span>
-                Marshal Benedict. All rights reserved.
-            </p>
-
-        </div>
     </footer>
 
-    <script>
-        // JavaScript Code
 
-        // Display the current year
-        document.getElementById("year").textContent =
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        // MOBILE NAVIGATION
+
+        const menuToggle = document.getElementById("menuToggle");
+
+        const navLinks = document.getElementById("navLinks");
+
+        menuToggle.addEventListener("click", function () {
+
+            navLinks.classList.toggle("active");
+
+            const isExpanded =
+                navLinks.classList.contains("active");
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                isExpanded
+            );
+
+        });
+
+
+        // CLOSE MOBILE MENU AFTER CLICKING A LINK
+
+        const navigationLinks =
+            document.querySelectorAll(".nav-links a");
+
+        navigationLinks.forEach(function (link) {
+
+            link.addEventListener("click", function () {
+
+                navLinks.classList.remove("active");
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+            });
+
+        });
+
+
+        // AUTOMATIC COPYRIGHT YEAR
+
+        document.getElementById("currentYear").textContent =
             new Date().getFullYear();
 
-        
-        
+
+        // CONTACT FORM VALIDATION AND EMAIL
+
+        const contactForm =
+            document.getElementById("contactForm");
+
+        contactForm.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+            const name =
+                document.getElementById("name").value.trim();
+
+            const email =
+                document.getElementById("email").value.trim();
+
+            const subject =
+                document.getElementById("subject").value.trim();
+
+            const message =
+                document.getElementById("message").value.trim();
+
+
+            // CHECK EMPTY FIELDS
+
+            if (!name || !email || !subject || !message) {
+
+                alert("Please fill in all required fields.");
+
+                return;
+
+            }
+
+
+            // CHECK EMAIL FORMAT
+
+            const emailPattern =
+                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailPattern.test(email)) {
+
+                alert("Please enter a valid email address.");
+
+                return;
+
+            }
+
+
+            // CREATE EMAIL CONTENT
+
+            const recipient =
+                "Marshalbenadict9@gmail.com";
+
+            const emailSubject =
+                encodeURIComponent(subject);
+
+            const emailBody =
+                encodeURIComponent(
+                    "Name: " + name +
+                    "\nEmail: " + email +
+                    "\n\nMessage:\n" + message
+                );
+
+
+            // OPEN THE USER'S EMAIL APPLICATION
+
+            const mailtoLink =
+                "mailto:" + recipient +
+                "?subject=" + emailSubject +
+                "&body=" + emailBody;
+
+            window.location.href = mailtoLink;
+
+        });
+
     </script>
 
 </body>
